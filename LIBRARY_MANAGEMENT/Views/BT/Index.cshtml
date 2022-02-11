@@ -1,0 +1,55 @@
+﻿@model IEnumerable<LIBRARY_MANAGEMENT.Models.Borrower_Table>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a><span class="glyphicon glyphicon-pencil"></span></a>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            Borrower Id
+        </th>
+        <th>
+           BookId
+        </th>
+        <th>
+            Borrow Date
+        </th>
+        <th>
+            Return Date
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Borrower_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Book_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Borrow_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Return_Date)
+        </td>
+        <td>
+            <a><span class="glyphicon glyphicon-edit"></span></a>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Borrower_Id })
+            <a><span class="glyphicon glyphicon-search"></span></a>
+            @Html.ActionLink("Details", "Details", new { id = item.Borrower_Id })
+            <a><span class="glyphicon glyphicon-remove"></span></a>
+            @Html.ActionLink("Delete", "Delete", new { id = item.Borrower_Id })
+        </td>
+    </tr>
+}
+
+</table>

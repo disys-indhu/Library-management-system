@@ -1,0 +1,67 @@
+﻿@model IEnumerable<LIBRARY_MANAGEMENT.Models.Indhu_Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a><span class="glyphicon glyphicon-pencil"></span></a>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            Book Id
+        </th>
+        <th>
+            Book Name
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            Edition
+        </th>
+        <th>
+            Publish
+        </th>
+        <th>
+            Copies
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BAuthor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BEdition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BPublish)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BCopies)
+        </td>
+        <td>
+            <a><span class="glyphicon glyphicon-edit"></span></a>
+            @Html.ActionLink("Edit", "Edit", new { id = item.BookId })
+            <a><span class="glyphicon glyphicon-search"></span></a>
+            @Html.ActionLink("Details", "Details", new { id = item.BookId })
+            <a><span class="glyphicon glyphicon-remove"></span></a>
+            @Html.ActionLink("Delete", "Delete", new { id = item.BookId })
+        </td>
+    </tr>
+}
+
+</table>

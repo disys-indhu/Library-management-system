@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LIBRARY_MANAGEMENTModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'appdev_training.dbo.Book_Details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Book_Details">
+          <Key>
+            <PropertyRef Name="Book_id" />
+          </Key>
+          <Property Name="Book_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Book_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Book_author" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Borrower_Table">
+          <Key>
+            <PropertyRef Name="Borrower_Id" />
+          </Key>
+          <Property Name="Borrower_Id" Type="int" Nullable="false" />
+          <Property Name="Book_Id" Type="int" />
+          <Property Name="Borrow_Date" Type="date" />
+          <Property Name="Return_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="BuildVersion">
+          <Key>
+            <PropertyRef Name="SystemInformationID" />
+          </Key>
+          <Property Name="SystemInformationID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Database Version" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="VersionDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorTime" Type="datetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ErrorNumber" Type="int" Nullable="false" />
+          <Property Name="ErrorSeverity" Type="int" />
+          <Property Name="ErrorState" Type="int" />
+          <Property Name="ErrorProcedure" Type="nvarchar" MaxLength="126" />
+          <Property Name="ErrorLine" Type="int" />
+          <Property Name="ErrorMessage" Type="nvarchar" MaxLength="4000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Library_Book_Details">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Book_ID" Type="int" Nullable="false" />
+          <Property Name="Book_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Author" Type="varchar" MaxLength="50" />
+          <Property Name="Edition" Type="varchar" MaxLength="50" />
+          <Property Name="Publish" Type="varchar" MaxLength="50" />
+          <Property Name="Copies" Type="int" />
+        </EntityType>
+        <EntityContainer Name="LIBRARY_MANAGEMENTModelsStoreContainer">
+          <EntitySet Name="Borrower_Table" EntityType="Self.Borrower_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BuildVersion" EntityType="Self.BuildVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Library_Book_Details" EntityType="Self.Library_Book_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book_Details" EntityType="Self.Book_Details" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Book_Details].[Book_id] AS [Book_id], 
+    [Book_Details].[Book_name] AS [Book_name], 
+    [Book_Details].[Book_author] AS [Book_author]
+    FROM [dbo].[Book_Details] AS [Book_Details]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LIBRARY_MANAGEMENTModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="book_thiru_">
+          <Key>
+            <PropertyRef Name="bookid" />
+          </Key>
+          <Property Name="bookid" Type="Int32" Nullable="false" />
+          <Property Name="bookname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bookpages" Type="Int32" />
+          <Property Name="bookedition" Type="Int32" />
+          <Property Name="bookyearofpublish" Type="Int32" />
+          <Property Name="numberofcopies" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BuildVersion">
+          <Key>
+            <PropertyRef Name="SystemInformationID" />
+          </Key>
+          <Property Name="SystemInformationID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Database_Version" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VersionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ErrorNumber" Type="Int32" Nullable="false" />
+          <Property Name="ErrorSeverity" Type="Int32" />
+          <Property Name="ErrorState" Type="Int32" />
+          <Property Name="ErrorProcedure" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorLine" Type="Int32" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Library_Book_Details">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Book_ID" Type="Int32" Nullable="false" />
+          <Property Name="Book_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Edition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Publish" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Copies" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Book_Details">
+          <Key>
+            <PropertyRef Name="Book_id" />
+          </Key>
+          <Property Name="Book_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Book_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Book_author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DBModels" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="book_thiru_" EntityType="Self.book_thiru_" />
+          <EntitySet Name="BuildVersions" EntityType="Self.BuildVersion" />
+          <EntitySet Name="ErrorLogs" EntityType="Self.ErrorLog" />
+          <EntitySet Name="Library_Book_Details" EntityType="Self.Library_Book_Details" />
+          <EntitySet Name="Book_Details" EntityType="Self.Book_Details" />
+          <EntitySet Name="Borrower_Table" EntityType="LIBRARY_MANAGEMENTModels.Borrower_Table" />
+        </EntityContainer>
+        <EntityType Name="Borrower_Table">
+          <Key>
+            <PropertyRef Name="Borrower_Id" />
+          </Key>
+          <Property Name="Borrower_Id" Type="Int32" Nullable="false" />
+          <Property Name="Book_Id" Type="Int32" />
+          <Property Name="Borrow_Date" Type="DateTime" Precision="0" />
+          <Property Name="Return_Date" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LIBRARY_MANAGEMENTModelsStoreContainer" CdmEntityContainer="DBModels">
+          <EntitySetMapping Name="BuildVersions">
+            <EntityTypeMapping TypeName="LIBRARY_MANAGEMENTModels.BuildVersion">
+              <MappingFragment StoreEntitySet="BuildVersion">
+                <ScalarProperty Name="SystemInformationID" ColumnName="SystemInformationID" />
+                <ScalarProperty Name="Database_Version" ColumnName="Database Version" />
+                <ScalarProperty Name="VersionDate" ColumnName="VersionDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="LIBRARY_MANAGEMENTModels.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
+                <ScalarProperty Name="ErrorTime" ColumnName="ErrorTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Library_Book_Details">
+            <EntityTypeMapping TypeName="LIBRARY_MANAGEMENTModels.Library_Book_Details">
+              <MappingFragment StoreEntitySet="Library_Book_Details">
+                <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="Publish" ColumnName="Publish" />
+                <ScalarProperty Name="Copies" ColumnName="Copies" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Book_Details">
+            <EntityTypeMapping TypeName="LIBRARY_MANAGEMENTModels.Book_Details">
+              <MappingFragment StoreEntitySet="Book_Details">
+                <ScalarProperty Name="Book_id" ColumnName="Book_id" />
+                <ScalarProperty Name="Book_name" ColumnName="Book_name" />
+                <ScalarProperty Name="Book_author" ColumnName="Book_author" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Borrower_Table">
+            <EntityTypeMapping TypeName="LIBRARY_MANAGEMENTModels.Borrower_Table">
+              <MappingFragment StoreEntitySet="Borrower_Table">
+                <ScalarProperty Name="Return_Date" ColumnName="Return_Date" />
+                <ScalarProperty Name="Borrow_Date" ColumnName="Borrow_Date" />
+                <ScalarProperty Name="Book_Id" ColumnName="Book_Id" />
+                <ScalarProperty Name="Borrower_Id" ColumnName="Borrower_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

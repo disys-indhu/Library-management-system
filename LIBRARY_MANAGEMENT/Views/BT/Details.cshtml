@@ -1,0 +1,52 @@
+﻿@model LIBRARY_MANAGEMENT.Models.Borrower_Table
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Borrower_Table</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Borrower Id
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrower_Id)
+        </dd>
+
+        <dt>
+            Book Id
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_Id)
+        </dd>
+
+        <dt>
+           Borrow Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borrow_Date)
+        </dd>
+
+        <dt>
+            Return Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Return_Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a><span class="glyphicon glyphicon-edit"></span></a>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Borrower_Id })
+    <a><span class="glyphicon glyphicon-arrow-left"></span></a>
+    @Html.ActionLink("Back to List", "Index")
+</p>
